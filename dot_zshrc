@@ -64,6 +64,7 @@ esac
 
 # Load fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 
 atuin-setup() {
   if [ -d $HOME/.config/atuin ]; then
