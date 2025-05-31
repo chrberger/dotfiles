@@ -1,5 +1,11 @@
 # .bashrc
 
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
 # infinite history
 export HISTFILESIZE=
 export HISTSIZE=
@@ -23,17 +29,13 @@ if [ -d /opt/homebrew/bin ]; then
 fi
   
 case "$OSTYPE" in
-  "linux-gnu"* )
-    PATH=$PATH
-    ;;
+  "linux-gnu"* ) ;;
 
   "darwin"* )
     PATH=/opt/homebrew/bin:$PATH
     ;;
 
-  "freebsd"* )
-    PATH=$PATH
-    ;;
+  "freebsd"* ) ;;
 esac
 export PATH
 
