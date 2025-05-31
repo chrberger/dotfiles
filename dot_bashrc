@@ -20,12 +20,15 @@ fi
 case "$OSTYPE" in
   "linux-gnu"* )
     PATH=$PATH
+    ;;
 
   "darwin"* )
     PATH=/opt/homebrew/bin:$PATH
+    ;;
 
   "freebsd"* )
     PATH=$PATH
+    ;;
 esac
 export PATH
 
