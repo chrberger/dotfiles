@@ -1,0 +1,47 @@
+# .bashrc
+
+# infinite history
+export HISTFILESIZE=
+export HISTSIZE=
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+if [ -f /etc/bash.bashrc ]; then
+  . /etc/bash.bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+  PATH="$HOME/.local/bin:$PATH"
+fi
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # ...
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  PATH=/opt/homebrew/bin:$PATH
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+  # ...
+fi
+export PATH
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+  xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# setup atuin
+if [ -d $HOME/.config/atuin ]; then
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    . "$HOME/.atuin/bin/env"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+   # MacOS
+  elif [[ "$OSTYPE" == "freebsd"* ]]; then
+    # ...
+  fi
+  eval "$(atuin init bash)"
+fi
+
+alias ll='ls -alF'
+alias mc="mc --nosubshell"
