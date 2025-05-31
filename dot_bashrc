@@ -54,7 +54,7 @@ if [ -d $HOME/.config/atuin ]; then
   #elif [[ "$OSTYPE" == "freebsd"* ]]; then
   #  # ...
   #fi
-  eval "$(atuin init bash)"
+  eval "$(atuin init bash --disable-up-arrow)"
 fi
 
 alias ll='ls -alF'
