@@ -1,0 +1,17 @@
+set backspace=2         " backspace in insert mode works like normal editor
+syntax on               " syntax highlighting
+filetype indent on      " activates indenting for files
+set autoindent          " auto indenting
+set tabstop=2 
+set shiftwidth=2
+set expandtab
+set number              " line numbers
+set relativenumber
+set nobackup            " get rid of anoying ~file
+
+set pastetoggle=<F2>
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
