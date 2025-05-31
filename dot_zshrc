@@ -27,7 +27,7 @@ ZSH_CUSTOM='$HOME/.oh-my-zsh-custom'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize colored-man-pages copyfile copypath git web-search)
+plugins=(colorize colored-man-pages copyfile copypath docker git pass ssh)
 
 source $ZSH/oh-my-zsh.sh
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
