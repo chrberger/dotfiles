@@ -17,6 +17,11 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
   PATH="$HOME/.local/bin:$PATH"
 fi
+# fix for MacOS
+if [ -d /opt/homebrew/bin ]; then
+  PATH=/opt/homebrew/bin:$PATH
+fi
+  
 case "$OSTYPE" in
   "linux-gnu"* )
     PATH=$PATH
