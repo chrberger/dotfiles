@@ -1,0 +1,7 @@
+[user]
+	email = christian.berger@gu.se
+	name = Christian Berger
+[core]
+	editor = vi
+[init]
+	defaultBranch = main
