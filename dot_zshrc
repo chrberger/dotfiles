@@ -66,6 +66,14 @@ esac
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 
+# if fd is installed
+if [[ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat ]]
+then
+  export FZF_DEFAULT_COMMAND="fd --type f"
+  # export FZF_DEFAULT_COMMAND="rg --files --ignore-vcs --hidden"
+  export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+fi
+
 atuin-setup() {
   if [ -d $HOME/.config/atuin ]; then
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
