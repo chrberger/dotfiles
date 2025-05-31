@@ -18,11 +18,11 @@ then
   PATH="$HOME/.local/bin:$PATH"
 fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  # ...
+  PATH=$PATH
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   PATH=/opt/homebrew/bin:$PATH
 elif [[ "$OSTYPE" == "freebsd"* ]]; then
-  # ...
+  PATH=$PATH
 fi
 export PATH
 
@@ -35,10 +35,10 @@ esac
 if [ -d $HOME/.config/atuin ]; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     . "$HOME/.atuin/bin/env"
-  elif [[ "$OSTYPE" == "darwin"* ]]; then
-   # MacOS
-  elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    # ...
+  #elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # # MacOS
+  #elif [[ "$OSTYPE" == "freebsd"* ]]; then
+  #  # ...
   fi
   eval "$(atuin init bash)"
 fi
