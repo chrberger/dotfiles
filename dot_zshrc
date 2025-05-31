@@ -67,13 +67,15 @@ esac
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 
 # Some aliases depending on installed software
-[ -f /usr/bin/batcat ] && alias bat='batcat --color=always'
+if [ -x /usr/bin/batcat ]; then
+  alias bat='batcat --color=always'
+fi
 # if fd is installed
-if [ -x /usr/bin/fdfind ]; then
+if [ -x /usr/bin/fdfind -a -x /usr/bin/batcat ]; then
 	alias fd='fdfind'
 
   export FZF_DEFAULT_COMMAND="fd --type f"
-  export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+  export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
 fi
 
 if [ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat -o ]; then
