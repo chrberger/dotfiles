@@ -17,13 +17,16 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
   PATH="$HOME/.local/bin:$PATH"
 fi
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  PATH=$PATH
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  PATH=/opt/homebrew/bin:$PATH
-elif [[ "$OSTYPE" == "freebsd"* ]]; then
-  PATH=$PATH
-fi
+case "$OSTYPE" in
+  "linux-gnu"* )
+    PATH=$PATH
+
+  "darwin"* )
+    PATH=/opt/homebrew/bin:$PATH
+
+  "freebsd"* )
+    PATH=$PATH
+esac
 export PATH
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -35,11 +38,12 @@ esac
 if [ -d $HOME/.config/atuin ]; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     . "$HOME/.atuin/bin/env"
+  fi
   #elif [[ "$OSTYPE" == "darwin"* ]]; then
   # # MacOS
   #elif [[ "$OSTYPE" == "freebsd"* ]]; then
   #  # ...
-  fi
+  #fi
   eval "$(atuin init bash)"
 fi
 
