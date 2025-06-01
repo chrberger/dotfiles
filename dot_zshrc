@@ -61,17 +61,22 @@ if [ -x /usr/bin/batcat ]; then
 fi
 # if fd is installed
 if [ -x /usr/bin/fdfind -a -x /usr/bin/batcat ]; then
-	alias fd='fdfind'
-
+  alias fd='fdfind'
   export FZF_DEFAULT_COMMAND="fd --type f"
   export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
 fi
 
-if [ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat -o ]; then
+if [ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat ]; then
   export FZF_DEFAULT_COMMAND="fd --type f"
   # export FZF_DEFAULT_COMMAND="rg --files --ignore-vcs --hidden"
   export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
+if [ -x /usr/local/bin/fd -a -x /usr/local/bin/bat ]; then
+  export FZF_DEFAULT_COMMAND="fd --type f"
+  # export FZF_DEFAULT_COMMAND="rg --files --ignore-vcs --hidden"
+  export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+fi
+
 
 # See https://github.com/atuinsh/atuin/issues/68#issuecomment-1567410629
 atuin-setup() {
