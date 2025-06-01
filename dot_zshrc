@@ -23,20 +23,14 @@ ZSH_CUSTOM='$HOME/.oh-my-zsh-custom'
   source $HOME/.oh-my-zsh-custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [ -f $HOME/.oh-my-zsh-custom/plugins/fzf-tab/fzf-tab.zsh ] && \
   source $HOME/.oh-my-zsh-custom/plugins/fzf-tab/fzf-tab.zsh
+[ -f ~/.oh-my-zsh-custom/plugins/zsh-chezmoi.zsh ] && \
+  source ~/.oh-my-zsh-custom/plugins/zsh-chezmoi.zsh
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# plugins to load
 plugins=(colorize colored-man-pages copyfile copypath docker git pass ssh)
 
 source $ZSH/oh-my-zsh.sh
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
-
-# chezmoi completion
-[ -f ~/.oh-my-zsh-custom/plugins/zsh-chezmoi.zsh ] && \
-  source ~/.oh-my-zsh-custom/plugins/zsh-chezmoi.zsh
 
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
@@ -44,18 +38,13 @@ SAVEHIST=$HISTSIZE
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH=$HOME/.local/bin:$PATH
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-  PATH="$HOME/.local/bin:$PATH"
-fi
 # fix for MacOS
 if [ -d /opt/homebrew/bin ]; then
-  PATH=/opt/homebrew/bin:$PATH
+  export PATH=/opt/homebrew/bin:$PATH
   alias tac='tail -r'
 fi
-export PATH
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -84,18 +73,8 @@ if [ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat -o ]; then
   export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
 
+# See https://github.com/atuinsh/atuin/issues/68#issuecomment-1567410629
 atuin-setup() {
-  #if [ -x $HOME/.local/bin/atuin ]; then
-    #if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    #  . "$HOME/.atuin/bin/env"
-    #fi
-    #elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # # MacOS
-    #elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    #  # ...
-    #fi
-  #fi
-
   if ! which atuin &> /dev/null; then return 1; fi
   bindkey '^E' _atuin_search_widget
 
@@ -105,7 +84,6 @@ atuin-setup() {
       local selected num
       setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
 
-      # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
       local atuin_opts="--cmd-only"
       local fzf_opts=(
           --height=${FZF_TMUX_HEIGHT:-80%}
@@ -134,5 +112,6 @@ atuin-setup() {
 }
 atuin-setup
 
+# Aliases
 alias ll='ls -alF'
 alias mc="mc --nosubshell"
