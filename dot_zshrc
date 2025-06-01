@@ -85,16 +85,16 @@ if [ -x /opt/homebrew/bin/fd -a -x /opt/homebrew/bin/bat -o ]; then
 fi
 
 atuin-setup() {
-  if [ -d $HOME/.config/atuin ]; then
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-      . "$HOME/.atuin/bin/env"
-    fi
+  #if [ -x $HOME/.local/bin/atuin ]; then
+    #if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    #  . "$HOME/.atuin/bin/env"
+    #fi
     #elif [[ "$OSTYPE" == "darwin"* ]]; then
     # # MacOS
     #elif [[ "$OSTYPE" == "freebsd"* ]]; then
     #  # ...
     #fi
-  fi
+  #fi
 
   if ! which atuin &> /dev/null; then return 1; fi
   bindkey '^E' _atuin_search_widget
