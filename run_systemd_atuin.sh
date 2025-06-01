@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# See https://github.com/atuinsh/atuin/issues/952#issuecomment-2781257111
 if [ -f $HOME/.config/systemd/user/atuin.service ]; then
   systemctl --user daemon-reload
   systemctl --user enable atuin.service
