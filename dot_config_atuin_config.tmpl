@@ -234,7 +234,6 @@ records = true
 {{ if eq .chezmoi.os "darwin" }}
 enabled = false
 {{ else if eq .chezmoi.os "linux" }}
-[".local/bin/atuin"]
 enabled = true
 ## How often the daemon should sync in seconds
 sync_frequency = 300
