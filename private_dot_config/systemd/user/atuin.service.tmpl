@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "linux" }}
+[Unit]
+Description=Atuin daemon service
+Documentation=https://docs.atuin.sh
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart={{ .chezmoi.homeDir }}/.local/bin/atuin daemon
+
+[Install]
+WantedBy=default.target
+{{ end }}
