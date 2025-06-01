@@ -6,3 +6,5 @@ if [ -f $HOME/.config/systemd/user/atuin.service ]; then
   systemctl --user enable atuin.service
   systemctl --user start atuin.service
 fi
+
+echo "If not already happened, run atuin login"
