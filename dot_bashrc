@@ -46,14 +46,6 @@ esac
 
 # setup atuin
 if [ -d $HOME/.config/atuin ]; then
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    . "$HOME/.atuin/bin/env"
-  fi
-  #elif [[ "$OSTYPE" == "darwin"* ]]; then
-  # # MacOS
-  #elif [[ "$OSTYPE" == "freebsd"* ]]; then
-  #  # ...
-  #fi
   eval "$(atuin init bash --disable-up-arrow)"
 fi
 
