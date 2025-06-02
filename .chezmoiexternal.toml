@@ -44,3 +44,8 @@
   type = "git-repo"
   url = "https://github.com/junegunn/fzf.git"
   refreshPeriod = "168h"
+
+[".tmux/plugins/tpm"]
+  type = "git-repo"
+  url = "https://github.com/tmux-plugins/tpm"
+  refreshPeriod = "168h"
