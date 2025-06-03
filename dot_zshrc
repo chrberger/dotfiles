@@ -115,4 +115,6 @@ atuin-setup
 
 # Aliases
 alias ll='ls -alF'
+alias vi='vim'
+export EDITOR=vi
 alias mc="mc --nosubshell"
