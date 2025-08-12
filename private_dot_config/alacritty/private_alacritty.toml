@@ -21,5 +21,5 @@ size = 18
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/one_dark.toml"
+    "~/.config/alacritty/themes/themes/tomorrow_night_bright.toml"
 ]
